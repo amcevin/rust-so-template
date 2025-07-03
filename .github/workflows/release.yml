@@ -137,6 +137,11 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           path: all-release
+      - name: Zip all artifacts
+        run: |
+          for dir in all-release/*; do
+            zip -r "$dir.zip" "$dir"
+          done
       - name: Create Release
         id: create_release
         uses: softprops/action-gh-release@v2
@@ -145,11 +150,4 @@ jobs:
           name: Release ${{ github.event.inputs.tag || github.ref_name }}
           draft: false
           prerelease: false
-      - name: Upload Release Assets
-        run: |
-          for dir in all-release/*; do
-            zip -r "$dir.zip" "$dir"
-            gh release upload "${{ github.event.inputs.tag || github.ref_name }}" "$dir.zip"
-          done
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          files: all-release/*.zip
