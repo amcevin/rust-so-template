@@ -29,7 +29,7 @@ clean:
 header:
 	cbindgen --lang c --output rust_so_example.h
 
-go-client: so
+go-client: header so
 	cd go-client && go build -o go-client main.go
 	./go-client/go-client
 

@@ -2,6 +2,12 @@ use std::ffi::CStr;
 use std::os::raw::c_char;
 
 #[no_mangle]
+pub extern "C" fn loop_once() -> i32 {
+    println!("this is loop_once from rust !!!");
+    return 0;
+}
+
+#[no_mangle]
 pub extern "C" fn trigger_once() -> i32 {
     println!("this is trigger_once from rust !!!");
     return 0;

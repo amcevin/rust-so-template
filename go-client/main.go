@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"time"
 )
 
 /*
@@ -22,4 +23,12 @@ func main() {
 
 	resultx := C.trigger_once()
 	fmt.Println(resultx)
+
+	for {
+		if C.loop_once() != 0 {
+			break
+		}
+		time.Sleep(1 * time.Second)
+	}
+
 }
