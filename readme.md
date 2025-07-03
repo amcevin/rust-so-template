@@ -13,3 +13,16 @@ export DYLD_LIBRARY_PATH=/so/path/:$DYLD_LIBRARY_PATH
 ```shell
 export LD_LIBRARY_PATH=/so/path:$LD_LIBRARY_PATH
 ```
+
+## TODO production 
+
+1. Add Code to src/lib.rs
+2. make header
+3. add caller from other client such as go-client 
+4. make go-client 
+
+## How to run produciton
+
+1. copy the compiled go binary
+2. copy the compiled so file
+3. update `DYLD_LIBRARY_PATH` or `LD_LIBRARY_PATH`

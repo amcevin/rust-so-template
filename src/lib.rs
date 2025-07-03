@@ -2,6 +2,12 @@ use std::ffi::CStr;
 use std::os::raw::c_char;
 
 #[no_mangle]
+pub extern "C" fn trigger_once() -> i32 {
+    println!("this is trigger_once from rust !!!");
+    return 0;
+}
+
+#[no_mangle]
 pub extern "C" fn add(a: *const c_char, b: *const c_char) -> i32 {
     // 将参数转换为 CStr
     let a_cstr = unsafe { CStr::from_ptr(a) };

@@ -19,4 +19,7 @@ func main() {
 	result := C.add(C.CString(msg1), C.CString(msg2))
 
 	fmt.Println(result)
+
+	resultx := C.trigger_once()
+	fmt.Println(resultx)
 }

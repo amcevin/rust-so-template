@@ -29,8 +29,9 @@ clean:
 header:
 	cbindgen --lang c --output rust_so_example.h
 
-go-client:
+go-client: so
 	cd go-client && go build -o go-client main.go
+	./go-client/go-client
 
 release: header 
 	cargo build --release	
