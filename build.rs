@@ -1,7 +1,7 @@
 use std::{env, path::Path};
 
 fn main() {
-    println!("cargo:warning=Hello, world!");
+    println!("cargo:warning=Hello, world prebuild script");
 
     let lib_name = env::var("CARGO_PKG_NAME").unwrap();
     let version = env!("CARGO_PKG_VERSION");
