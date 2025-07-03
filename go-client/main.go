@@ -14,6 +14,11 @@ import "C"
 
 func main() {
 
+	version := C.GoString(C.get_pkg_version())
+	name := C.GoString(C.get_pkg_name())
+
+	fmt.Println("running so version: ", version, " name: ", name)
+
 	msg1 := "42aa"
 	msg2 := "23"
 

@@ -1,4 +1,4 @@
-use std::ffi::CStr;
+use std::ffi::{CStr, CString};
 use std::os::raw::c_char;
 
 #[no_mangle]
@@ -11,6 +11,20 @@ pub extern "C" fn loop_once() -> i32 {
 pub extern "C" fn trigger_once() -> i32 {
     println!("this is trigger_once from rust !!!");
     return 0;
+}
+
+#[no_mangle]
+pub extern "C" fn get_pkg_name() -> *const c_char {
+    let name = env!("CARGO_PKG_NAME");
+    let c_str = CString::new(name).unwrap();
+    c_str.into_raw()
+}
+
+#[no_mangle]
+pub extern "C" fn get_pkg_version() -> *const c_char {
+    let version = env!("CARGO_PKG_VERSION");
+    let c_str = CString::new(version).unwrap();
+    c_str.into_raw()
 }
 
 #[no_mangle]
