@@ -2,3 +2,5 @@
 test
 main
 debug
+release/*
+rust_so_example.h

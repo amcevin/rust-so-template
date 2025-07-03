@@ -1,4 +1,14 @@
 
+.PHONY: go-client
+
+os := $(shell uname -s)
+arch := $(shell uname -m)
+ifeq ($(os), Darwin)
+	so_extension = dylib
+else
+	so_extension = so
+endif
+
 all: debug main
 
 so: 
@@ -7,7 +17,7 @@ so:
 debug-so: 
 	cargo build 
 
-debug: so
+debug: debug-so
 	gcc -o debug test.c -L./target/debug -lrust_so_example -lpthread -ldl
 
 main: so
@@ -15,3 +25,17 @@ main: so
 
 clean:
 	rm -rf debug main 
+
+header:
+	cbindgen --lang c --output rust_so_example.h
+
+go-client:
+	cd go-client && go build -o go-client main.go
+
+release: header go-client
+	cargo build --release	
+	mkdir -p release/${os}/${arch}
+	cp target/release/librust_so_example.${so_extension} release/${os}/${arch}/
+	cp rust_so_example.h release/${os}/${arch}/
+	cp go-client/go-client release/${os}/${arch}/
+
