@@ -32,10 +32,9 @@ header:
 go-client:
 	cd go-client && go build -o go-client main.go
 
-release: header go-client
+release: header 
 	cargo build --release	
 	mkdir -p release/${os}/${arch}
 	cp target/release/librust_so_example.${so_extension} release/${os}/${arch}/
 	cp rust_so_example.h release/${os}/${arch}/
-	cp go-client/go-client release/${os}/${arch}/
 
