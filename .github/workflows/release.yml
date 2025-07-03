@@ -19,6 +19,7 @@ jobs:
     name: Build and Release
     runs-on: ${{ matrix.os }}
     strategy:
+      fail-fast: false
       matrix:
         include:
           - os: ubuntu-latest
@@ -30,9 +31,6 @@ jobs:
           - os: macos-latest
             arch: x86_64
             target: x86_64-apple-darwin
-          - os: macos-latest
-            arch: arm64
-            target: aarch64-apple-darwin
     env:
       CARGO_TERM_COLOR: always
     steps:
@@ -40,11 +38,10 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Set up Rust
-        uses: actions-rs/toolchain@v1
+        uses: actions/setup-rust@v1
         with:
-          toolchain: stable
+          rust-version: stable
           target: ${{ matrix.target }}
-          override: true
 
       - name: Install build tools (Linux)
         if: runner.os == 'Linux'
@@ -69,6 +66,7 @@ jobs:
         run: |
           make clean || true
           make release
+          ls -l release/
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
