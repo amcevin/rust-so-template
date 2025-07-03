@@ -26,3 +26,15 @@ export LD_LIBRARY_PATH=/so/path:$LD_LIBRARY_PATH
 1. copy the compiled go binary
 2. copy the compiled so file
 3. update `DYLD_LIBRARY_PATH` or `LD_LIBRARY_PATH`
+
+## how to upgrade so version
+
+1. upload so to the path
+2. use ln change the soft link
+
+    ```shell
+    ln -sfn librust_so_example.so.1.1.0 librust_so_example.so
+    ```
+
+3. restart the binary process if needed
+
