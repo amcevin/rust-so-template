@@ -39,3 +39,9 @@ release: header
 	cp target/release/librust_so_example.${so_extension} release/${os}/${arch}/
 	cp rust_so_example.h release/${os}/${arch}/
 
+
+install-so: so
+	cp target/release/librust_so_example.${so_extension} /usr/local/lib/
+
+remove-so:
+	rm -f /usr/local/lib/librust_so_example.${so_extension}
