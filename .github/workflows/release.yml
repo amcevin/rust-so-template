@@ -139,8 +139,9 @@ jobs:
           path: all-release
       - name: Zip all artifacts
         run: |
+          tag_name=${{ github.event.inputs.tag || github.ref_name }}
           for dir in all-release/*; do
-            zip -r "$dir.zip" "$dir"
+            zip -r "${dir}-${tag_name}.zip" "$dir"
           done
       - name: Create Release
         id: create_release
