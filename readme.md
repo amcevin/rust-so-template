@@ -42,3 +42,4 @@ export LD_LIBRARY_PATH=/so/path:$LD_LIBRARY_PATH
 
 - go-client
 - py-client
+
