@@ -1,6 +1,6 @@
 # rust so example
 
-rust 编译为跨语言调用的so 模块
+Compile rust to a so binary file.
 
 ## osx change so path
 
@@ -38,3 +38,7 @@ export LD_LIBRARY_PATH=/so/path:$LD_LIBRARY_PATH
 
 3. restart the binary process if needed
 
+## client
+
+- go-client
+- py-client
