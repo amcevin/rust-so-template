@@ -1,6 +1,6 @@
 # rust so example
 
-Compile rust to a so binary file.
+Compile rust to a so binary file .
 
 ## osx change so path
 
@@ -32,9 +32,9 @@ export LD_LIBRARY_PATH=/so/path:$LD_LIBRARY_PATH
 1. upload so to the path
 2. use ln change the soft link
 
-    ```shell
-    ln -sfn librust_so_example.so.1.1.0 librust_so_example.so
-    ```
+   ```shell
+   ln -sfn librust_so_example.so.1.1.0 librust_so_example.so
+   ```
 
 3. restart the binary process if needed
 
@@ -42,4 +42,3 @@ export LD_LIBRARY_PATH=/so/path:$LD_LIBRARY_PATH
 
 - go-client
 - py-client
-
